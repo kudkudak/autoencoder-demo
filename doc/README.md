@@ -1,2 +1,2 @@
-Conference paper in Polish :)
+Conference presentation in Polish :)
 

@@ -85,7 +85,7 @@ if __name__ == "__main__":
                 X=da.W.get_value(borrow=True).T[[x[1] for x in sort_pairs],],
                 img_shape=(28, 28), tile_shape=(5, 5),
                 tile_spacing=(1, 1))
-        plt.imshow(image, cmap='gray')
+        plt.imshow(image, cmap='jet')
         plt.show()
     
     

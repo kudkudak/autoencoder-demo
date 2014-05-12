@@ -1,19 +1,22 @@
-# Autoencoder MNIST digits recognition demo**
+# Autoencoder MNIST digits recognition demo
 (prepared for student conference **SeMPowisko 2014**)
 
 Demo presents digit recognition using single layer Autoencoder with simple logistic regression for classification
-(using learned features). Demo:
-    * display quality of reconstruction
-    * displays top learned features (new basis)
-    * asks user to draw digits and displays **online** probability distribution
+(using learned features).
+
+
+Demo:
+  
+* display quality of reconstruction
+  
+  * displays top learned features (new basis)
+    
+  * asks user to draw digits and displays online probability distribution
 
 Significant part of code is adopted from deeplearning.net tutorial.
 
-[screen1]
+![Digit reconstruction](screenshots/1.png =300x200)
 
-[screen2]
-
-[screen3]
 
 ### Installation
 
@@ -25,33 +28,35 @@ Or install manually required packages
 
 ### Usage
 
-1. Train the network. Type `python2 train.py -h` for possible parameters.
+  * Train the network. Type `python2 train.py -h` for possible parameters.
 
-`python2 train.py`
+  `python2 train.py`
 
-In case of problems try reconfiguring theano to use float32 (in .theanorc file).
-But it shouldn't happen.
+  In case of problems try reconfiguring theano to use float32 (in .theanorc file).
+  But it shouldn't happen.
+  You can also use supplied trained model. Unzip model.zip file to the folder
 
-You can also use supplied trained model. Unzip model.zip file to the folder
+  * Run demo.
 
-2. Run demo.
+  `python2 demo.py`
 
-`python2 demo.py`
-
-3. Run drawing application
+  * Run drawing application
 
 `python2 drawer.py`
 
-### Autoencoder
-
-**Autoencoder** is a kind of neural network that is "forced" to optimally encode its input.
-For more informations see this great UFDL tutorial: [LINK]
-
-
 ### Configuration
 
-There are few parameters possible to tweak
+There are few parameters possible to tweak. See -h help in train.py
 
-### References
+### Screenshots
 
-Demo is heavily based on tutorial from deeplearning.net : http://deeplearning.net/tutorial/dA.html
+![](screenshots/2.png?raw=true =300x200)
+
+![](screenshots/3.png?raw=true =300x200)
+
+### Refereces
+
+**Autoencoder** is a kind of neural network that is "forced" to optimally encode its input.
+For more informations see this great UFDL tutorial: [http://ufldl.stanford.edu/wiki/index.php/Autoencoders_and_Sparsity](http://ufldl.stanford.edu/wiki/index.php/Autoencoders_and_Sparsity).
+
+See also original tutorial from deeplearning.net [http://deeplearning.net/tutorial/dA.html](http://deeplearning.net/tutorial/dA.html)
