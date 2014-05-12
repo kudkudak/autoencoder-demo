@@ -32,6 +32,8 @@ Or install manually required packages
 In case of problems try reconfiguring theano to use float32 (in .theanorc file).
 But it shouldn't happen.
 
+You can also use supplied trained model. Unzip model.zip file to the folder
+
 2. Run demo.
 
 `python2 demo.py`

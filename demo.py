@@ -1,4 +1,5 @@
 import theano
+from optparse import OptionParser
 import theano.tensor as T
 from theano.tensor.shared_randomstreams import RandomStreams
 import numpy as np
@@ -64,28 +65,30 @@ if __name__ == "__main__":
 
 
 
-
+    print  "Showing reconstructions by "+str(28*28)+"x"+str(n_hidden)+" autoencoder network"
     for i in [0,1,3,5]:
         rec,rec_hid = da.reconstruct(train_set_x.get_value(borrow=True)[i:i+1,:])
         f, (ax1, ax2) = plt.subplots(1, 2)
         ax1.imshow(train_set_x.get_value(borrow=True)[i:i+1,:].reshape(28,28), cmap='gray')
         ax1.set_title("Original digit")
         ax2.imshow(rec.reshape(28,28), cmap='gray')
-        ax2.set_title("Reconstruction by "+str(28*28)+"x"+n_hidden+" autoencoder network")
+        ax2.set_title("Reconstruction")
         plt.show()
 
 
         sort_pairs = [(val, idx) for idx, val in enumerate(rec_hid.reshape(-1))]
         sort_pairs.sort(reverse=True)
-        print sort_pairs
 
+        plt.title("Top learned features")
+        print "Showing features/new basis for digits"
         image = tile_raster_images(
                 X=da.W.get_value(borrow=True).T[[x[1] for x in sort_pairs],],
                 img_shape=(28, 28), tile_shape=(5, 5),
                 tile_spacing=(1, 1))
         plt.imshow(image, cmap='gray')
         plt.show()
-
+    
+    
 
 
     ######## Plotting results #############3
@@ -146,13 +149,15 @@ if __name__ == "__main__":
     rects = plt.bar(pos, frequencies, width, color='r')
     start = clock()
 
+    print "Run drawer.py to draw digits"
+    print "Note that it is not scaled and network is very simple. It is an educational example :)"
+    print "Draw digits a little bit smaller than whole window size (because there is no scaling/standarization)"
+
     def animate(arg, rects):
         frameno, frequencies = arg
         for rect, f in zip(rects, frequencies):
             rect.set_height(f)
         print("FPS: {:.2f}".format(frameno / (clock() - start)))
-
-
 
 
     def step():
@@ -176,6 +181,6 @@ if __name__ == "__main__":
     ani = animation.FuncAnimation(fig, animate, step, interval=10,
                                   repeat=False, blit=False, fargs=(rects,))
 
-
+    plt.title("Digit probability distribution")
     plt.show()
 
