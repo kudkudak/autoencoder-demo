@@ -37,7 +37,7 @@ class dA(object):
        self.W_prime = self.W.T
        self.theano_rng = theano_rng
        if input == None:
-           self.x = T.dmatrix(name='input')
+           self.x = T.matrix(name='input', dtype=theano.config.floatX)
        else:
            self.x = input
 
@@ -47,7 +47,7 @@ class dA(object):
  
        self.rec = self.get_reconstructed_input(self.output)
 
-       x = T.matrix('x') # the data is presented as rasterized images
+       x = T.matrix('x', dtype=theano.config.floatX) # the data is presented as rasterized images
         
 
        # Compile theano function that returns all values calculated by Autoencoder

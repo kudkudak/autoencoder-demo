@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     # Define options
     parser.add_option(
-        '-h',
+        '-k',
         '--n_hidden',
         dest='n_hidden',
         default=1000,
@@ -26,16 +26,16 @@ if __name__ == '__main__':
         '-d',
         '--train_da',
         dest='train_da',
-        default=True,
-        type=bool,
+        default=1,
+        type=int,
         help='Train denoising autoencoder'
     )
     parser.add_option(
         '-l',
         '--train_logreg',
         dest='train_logreg',
-        default=True,
-        type=bool,
+        default=1,
+        type=int,
         help='Train logistic regression'
     )
     parser.add_option(
@@ -46,14 +46,7 @@ if __name__ == '__main__':
         type=int,
         help='How long train'
     )
-    parser.add_option(
-        '-t',
-        '--training_epochs',
-        dest='training_epochs',
-        default=50,
-        type=int,
-        help='How long train'
-    )
+
     parser.add_option(
         '-b',
         '--noise_level',
@@ -71,8 +64,8 @@ if __name__ == '__main__':
     batch_size=20
     training_epochs=50
     n_hidden=options.n_hidden
-    train_da=options.train_da
-    train_logreg=options.train_logreg
+    train_da=bool(options.train_da)
+    train_logreg=bool(options.train_logreg)
     noise_level = 0.32
 
 
@@ -96,7 +89,7 @@ if __name__ == '__main__':
               "discriminative task, but for generative task"
 
         index = T.lscalar()  # index to a [mini]batch
-        x = T.matrix('x')  # the data is presented as rasterized images
+        x = T.matrix('x', dtype=theano.config.floatX)  # the data is presented as rasterized images
 
         ######################
         # BUILDING THE MODEL #

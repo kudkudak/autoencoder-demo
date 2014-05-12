@@ -29,6 +29,9 @@ Or install manually required packages
 
 `python2 train.py`
 
+In case of problems try reconfiguring theano to use float32 (in .theanorc file).
+But it shouldn't happen.
+
 2. Run demo.
 
 `python2 demo.py`
@@ -49,4 +52,4 @@ There are few parameters possible to tweak
 
 ### References
 
-Demo is heavily based on tutorial from deeplearning.net : [LINK]
+Demo is heavily based on tutorial from deeplearning.net : http://deeplearning.net/tutorial/dA.html
