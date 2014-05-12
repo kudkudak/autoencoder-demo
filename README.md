@@ -15,7 +15,7 @@ Demo:
 
 Significant part of code is adopted from deeplearning.net tutorial.
 
-![Digit reconstruction](screenshots/1.png =300x200)
+![](screenshots/1.png =300x200)
 
 
 ### Installation
